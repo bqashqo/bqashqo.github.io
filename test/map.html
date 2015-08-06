@@ -49,6 +49,7 @@ var map = L.mapbox.map('map', 'b-qashqo.n1ki2nll', {
 });
 // zoom the map to that bounding box
 map.fitBounds(bounds);
+map.legendControl.addLegend(document.getElementById('legend').innerHTML);
 
 </script>
 </body>
