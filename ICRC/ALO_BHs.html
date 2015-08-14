@@ -1,4 +1,3 @@
- 
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +19,7 @@
   text-align:center;
   font-size:12px;
   color:#7d7d7d;
+
 }
 .my-custom-control { background: url('https://www.icrc.org/sites/default/themes/icrc_theme/images/en/logo.png'); 
 background-size: 70px 81px;
@@ -46,20 +46,49 @@ height: 118px;
             .my-custom-control:hover {
                 background-size: 100px;
             }
-        }    
-		
+#title{
+position:absolute;
+background-color: white;
+height:60px;
+width :200px;
+top:15px;
+right:50px;
+text-align:right;
+padding-top:5px;
+padding-right:5px;
+font-weight: bold;
+z-index:10;
+}
+#Disclaimer{
+position:absolute;
+/*background-color: white;*/
+height:20px;
+/*width :200px;*/
+bottom:12px;
+left:100px;
+/*text-align:left;*/
+padding-top:10px;
+padding-left:5px;
+font-size: 12px;
+z-index:10;
+}
+
 </style>
 </head>
 <body>
-
  <div id='legend'>
   <strong>مفتاح الرموز</strong>
   <nav class='legend clearfix'>
    <span><img src="https://a.tiles.mapbox.com/v4/marker/pin-s-marker+1087bf.png?access_token=pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w" height="50" width="20"></span>
-    <label> آبار مياه صالحة للشرب <small>تحديث:آب.2015</small></label>
-
+    <label> آبار مياه صالحة للشرب</label>  
 </div>
+
+<div id="title">الآبار المجهزة في مدينة حلب من قبل اللجنة الدولية للصليب الأحمر<br><small>تحديث:آب.2015</small></div>
+
+<div id="Disclaimer">©ICRC 2015 | The boundaries and names shown and the designations used on this map. Do not imply official endorsement or acceptance by the ICRC.</div>
+
 <div id='map'></div>
+
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w';
 // Construct a bounding box for this map that the user cannot
@@ -73,12 +102,14 @@ var map = L.mapbox.map('map', 'icrc.n4nnka35', {
     // http://leafletjs.com/reference.html#map-maxbounds
     maxBounds: bounds,
     maxZoom: 19,
-    minZoom: 13
+    minZoom: 13,
 });
 
 var layers = {
       Streets: L.mapbox.tileLayer('mapbox.streets'),
-      Satellite: L.mapbox.tileLayer('mapbox.satellite')
+      Satellite: L.mapbox.tileLayer('mapbox.satellite'),
+	  Sat_Street_HQ:L.mapbox.tileLayer('icrc.kog47201')
+	 
   };
   layers.Streets.addTo(map);
   L.control.layers(layers).addTo(map);
@@ -103,7 +134,14 @@ var MyControl = L.Control.extend({
       return imageLink;
     }
 });
+
 map.addControl(new MyControl());
+
+
+map.featureLayer.on('click', function(e) {
+    map.panTo(e.layer.getLatLng());
+});
+
 
 </script>
 
