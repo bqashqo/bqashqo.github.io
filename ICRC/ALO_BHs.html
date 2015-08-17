@@ -140,16 +140,7 @@ z-index:10;
 
 <div id='map'></div>
 
-<a class="fb-share" href="#" onclick="
-  window.open(
-    'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('http://codepen.io/'), 
-    'facebook-share-dialog', 
-    'width=626,height=436'); 
-  return false;">
-  <span class="fb-share-icon"></span><span class="fb-share-text">Share</span>
-</a>
 
-<img src="https://farm1.staticflickr.com/706/20027681043_c1be536cd4_b.jpg">
 
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w';
@@ -202,7 +193,16 @@ L.control.locate().addTo(map);
 map.featureLayer.on('click', function(e) {
     map.panTo(e.layer.getLatLng());
 });
+<a class="fb-share" href="#" onclick="
+  window.open(
+    'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('http://codepen.io/'), 
+    'facebook-share-dialog', 
+    'width=626,height=436'); 
+  return false;">
+  <span class="fb-share-icon"></span><span class="fb-share-text">Share</span>
+</a>
 
+<img src="https://farm1.staticflickr.com/706/20027681043_c1be536cd4_b.jpg">
 
 
 </script>
