@@ -2,11 +2,17 @@
 <html>
 <head>
 <link rel="icon" href="https://app.icrc.org/favicon.ico">
+<meta property="og:image" content="https://farm1.staticflickr.com/706/20027681043_c1be536cd4_b.jpg">
+<meta property="og:title" content="الخزانات المُقدمة من قبل اللجنة الدولية للصليب الأحمر في مدينة دير الزور">
 <meta charset=utf-8 />
-<title>الخزانات المُقدمة من قبل اللجنة الدولية للصليب الأحمر في مدينة دير الزور</title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
 <link href='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css' rel='stylesheet' />
+<!--[if lt IE 9]>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.ie.css' rel='stylesheet' />
+<![endif]-->
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
 
 <style>
   body { margin:0; padding:0; }
@@ -69,7 +75,7 @@ height: 118px;
     background-size: 100px;
 }
 /*show a larger image when you're on a big screen*/
-        @media screen and (min-width: 1200px) {
+        /*@media screen and (min-width: 1200px) {
             .my-custom-control {
                 background-size: 70px 81px;
                 width: 100px;
@@ -94,8 +100,10 @@ height: 118px;
 <div id="wrapper">
 <div id="title">الخزانات المُقدمة من قبل اللجنة الدولية للصليب الأحمر في مدينة دير الزور<br><small>خزانات مياه شرب سعة 5 م3 تٌعبأ بشكل دوري</small><br><small>تحديث:آب.2015</small></div>
 <div id="Disclaimer">الحدود والأسماء الموضحة والتسميات المستخدمة في هذه الخريطة. لا تعني إقراراً أو قبولاً رسمياً من قبل اللجنة الدولية | ©ICRC 2015.</div>
-
-<script type="text/javascript" src="http://www.icrcproject.org/api/js/header/?language=ar"></script>
+</div>
+<div id='map'></div>
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
+<script type="text/javascript" src="http://www.icrcproject.org/api/js/header/?language=ar&auto=true&is-responsive=true"></script>
 <script type="text/javascript">
     function init() { 
         headerIcrc = new icrc.Header();
@@ -105,16 +113,6 @@ height: 118px;
 </script>
 <!-- JAVASCRIPT -->
 <script type="text/javascript" src="../?language=ar"></script>
-</div>
-
-<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css' rel='stylesheet' />
-<!--[if lt IE 9]>
-<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.ie.css' rel='stylesheet' />
-<![endif]-->
-<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
-
-<div id='map'></div>
 
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w';
