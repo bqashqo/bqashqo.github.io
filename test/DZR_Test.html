@@ -6,7 +6,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/706/20027681043_c1be536cd4_b.jpg">
 <link rel="icon" href="https://app.icrc.org/favicon.ico">
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+
 <link href='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
 <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css' rel='stylesheet' />
 <!--[if lt IE 9]>
@@ -15,138 +15,163 @@
 <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
 
 <style>
-  body { margin:0; padding:0; }
-  #map { position:absolute; top:0; bottom:0; width:100%; }
-  .legend label,
-.legend span {
-  display:block;
-  float:right;
-  height:30px;
-  width:100%;
-  text-align:center;
-  font-size:12px;
-  color:#7d7d7d;
-}
-#title{
-position:absolute;
-background-color: #252525;
-height:75px;
-width :210px;
-top:15px;
-right:50px;
-text-align:right;
-padding-top:5px;
-padding-right:5px;
-font-weight: bold;
-color: white;
-z-index:10;
-}
-#Disclaimer{
-position:absolute;
-/*background-color: white;*/
-height:20px;
-/*width :200px;*/
-bottom:12px;
-left:100px;
-/*text-align:left;*/
-padding-top:10px;
-padding-left:5px;
-font-size: 12px;
-z-index:10;
-}
-#wrapper {
-    margin-left:auto;
-    margin-right:auto;
-    width:960px;
-}
-/*.my-custom-control { background: url('https://www.icrc.org/sites/default/themes/icrc_theme/images/en/logo.png'); 
-background-size: 70px 81px;
-background-repeat: no-repeat;
-background-position: center;
-background-clip: border-box;
-transition: background-size 0.2s;
--webkit-transition: background-size 0.2s;
-transition-timing-function: cubic-bezier(.05,1.2,.72,1.2);
-display: inline-block; 
-width: 100px;
-height: 118px;
-}/*
-/*.my-custom-control:hover {
-    background-size: 100px;
-}
-/*show a larger image when you're on a big screen*/
-        /*@media screen and (min-width: 1200px) {
-            .my-custom-control {
-                background-size: 70px 81px;
-                width: 100px;
-                height: 118px;
-            }
-            .my-custom-control:hover {
-                background-size: 100px;
-            }
-			}*/
+body { margin:0; padding:0; }
+#map { position:absolute; top:0; bottom:0; width:100%; }
 
+.legend label, .legend span {
+	display:block;
+	float:right;
+	height:30px;
+	width:100%;
+	text-align:center;
+	font-size:12px;
+	color:#7d7d7d;
+}
+
+#title{
+	position:absolute;
+	background-color: #252525;
+	width :210px;
+	top:15px;
+	left:50px;
+	text-align:right;
+	padding-top:5px;
+	padding-right:5px;
+	font-weight: bold;
+	color: white;
+	z-index:10;
+}
+#icrc-header {
+	z-index: 999;
+} 
+.toggle-icon {
+	padding-right: 10px;
+}
+.map-legend h4 {
+	cursor: pointer;
+}
+.legend p{
+	text-align: right;
+}
 
 </style>
 </head>
 <body>
- <div id='legend'>
-  <strong>مفتاح الرموز</strong>
-  <nav class='legend clearfix'>
-   <span><img src="https://a.tiles.mapbox.com/v4/marker/pin-m-marker+f86767.png?access_token=pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w" height="50" width="20"></span>
-    <label>خزانات مياه صالحة للشرب</label>  
-</div>
 
-<div id="wrapper">
-<div id="title">الخزانات المُقدمة من قبل اللجنة الدولية للصليب الأحمر في مدينة دير الزور<br><small>خزانات مياه شرب سعة 5 م3 تٌعبأ بشكل دوري</small><br><small>تحديث:آب.2015</small></div>
-<div id="Disclaimer">الحدود والأسماء الموضحة والتسميات المستخدمة في هذه الخريطة. لا تعني إقراراً أو قبولاً رسمياً من قبل اللجنة الدولية | ©ICRC 2015.</div>
-</div>
+<!--<div id='legend-box'>
+	<h4><i class="fa fa-caret-square-o-down toggle-icon" id="toggle-icon-legend"></i>مفتاح الرموز</h4>
+	<nav class='legend clearfix' id="legend-togglable">
+	<span><img src="https://a.tiles.mapbox.com/v4/marker/pin-m-marker+f86767.png?access_token=pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w" height="50" width="20"></span>
+	<label>خزانات مياه صالحة للشرب</label>
+	<p>خزانات مياه شرب سعة 5 م3 تٌعبأ بشكل دوري<br>تحديث:آب.2015</p>
+</div>-->
+
+<div id="title">الخزانات المُقدمة من قبل اللجنة الدولية للصليب الأحمر في مدينة دير الزور</div>
+
 <div id='map'></div>
+
+<script src='js/jquery-2.1.4.min.js'></script>
+<script src='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
 <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
 <script type="text/javascript" src="http://www.icrcproject.org/api/js/header/?language=ar&auto=true&is-responsive=true"></script>
-<script type="text/javascript">
-    function init() { 
-        headerIcrc = new icrc.Header();
-    }
-                    
-    window.onload = function() { init(); }
-</script>
+
 <!-- JAVASCRIPT -->
-<script type="text/javascript" src="../?language=ar"></script>
+<script type="text/javascript">
+    
+	function init() { 
+        
+		//initialize icrc header
+		headerIcrc = new icrc.Header();
+				
+		L.mapbox.accessToken = 'pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w';
+		// Construct a bounding box for this map that the user cannot
+		// move out of
+		var southWest = L.latLng(35.279501, 40.033630),
+			northEast = L.latLng(35.363769, 40.172798),
+			bounds = L.latLngBounds(southWest, northEast);
+		var map = L.mapbox.map('map', 'icrc.n6em67l6', {
+			// set that bounding box as maxBounds to restrict moving the map
+			// see full maxBounds documentation:
+			// http://leafletjs.com/reference.html#map-maxbounds
+			maxBounds: bounds,
+			maxZoom: 19,
+			minZoom: 13,
+			infoControl: false,
+			attributionControl: false,
+		});
+			
+// Add attribution to Mapbox and OpenStreetMap.
+var attribution = L.control.attribution();
+attribution.setPrefix('.الحدود والأسماء الموضحة والتسميات المستخدمة في هذه الخريطة. لا تعني إقراراً أو قبولاً رسمياً من قبل اللجنة الدولية');
+attribution.addAttribution('<a href="https://www.icrc.org/ar">© ICRC</a> | <a href="https://www.mapbox.com/about/maps">© Mapbox</a> | <a href="http://mapbox.com/map-feedback/" class="mapbox-improve-map">Improve this map</a>');
+attribution.addTo(map);
+// Extra points: make sure user lands on proper map and location when clicking 'Improve this map'
+// (don't forget to add same map id as in the map creation here).
+var editLink = function() {
+    if (!document.getElementsByClassName) {
+          return;
+      }
+      var link = document.getElementsByClassName('mapbox-improve-map');
+      if (link.length && map._loaded) {
+          var center = map.getCenter();
+          for (var i = 0; i < link.length; i++) {
+              link[i].href = link[i].href.split('#')[0] + '#icrc.n6em67l6/' + center.lng + '/' + center.lat + '/' + map.getZoom();
+          }
+      }
+};
+editLink();
+map.on('moveend', editLink);	
 
-<script>
-L.mapbox.accessToken = 'pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w';
-// Construct a bounding box for this map that the user cannot
-// move out of
-var southWest = L.latLng(35.279501, 40.033630),
-    northEast = L.latLng(35.363769, 40.172798),
-    bounds = L.latLngBounds(southWest, northEast);
-var map = L.mapbox.map('map', 'icrc.n6em67l6', {
-    // set that bounding box as maxBounds to restrict moving the map
-    // see full maxBounds documentation:
-    // http://leafletjs.com/reference.html#map-maxbounds
-    maxBounds: bounds,
-    maxZoom: 19,
-    minZoom: 13,
-});
-
-var layers = {
-      Streets: L.mapbox.tileLayer('mapbox.streets'),
-      Satellite: L.mapbox.tileLayer('mapbox.satellite'),
-	  Sat_Street_HQ:L.mapbox.tileLayer('icrc.kog47201')
-	 
-  };
-  layers.Streets.addTo(map);
-  L.control.layers(layers).addTo(map);
-// zoom the map to that bounding box
-map.fitBounds(bounds);
-map.legendControl.addLegend(document.getElementById('legend').innerHTML);
-L.control.scale().addTo(map);
-L.control.locate().addTo(map);
-map.featureLayer.on('click', function(e) {
-    map.panTo(e.layer.getLatLng());
-});
-
+		var layers = {
+			Streets: L.mapbox.tileLayer('mapbox.streets'),
+			Satellite: L.mapbox.tileLayer('mapbox.satellite'),
+			Sat_Street_HQ:L.mapbox.tileLayer('icrc.kog47201')
+		};
+		layers.Streets.addTo(map);
+		L.control.layers(layers).addTo(map);
+		
+		// zoom the map to that bounding box
+		map.fitBounds(bounds);
+		//map.legendControl.addLegend(document.getElementById('legend-box').innerHTML);
+		L.control.scale().addTo(map);
+		L.control.locate().addTo(map);
+		map.featureLayer.on('click', function(e) {
+			map.panTo(e.layer.getLatLng());
+		});
+		
+		// Legend
+		infoLegend = L.control({ position: 'bottomright' }); // { position: 'bottomleft' }
+		infoLegend.onAdd = function (map) {
+			this._div = L.DomUtil.create('div', 'info info-legend map-legends'); // create a div with a class "info"
+			this._div.innerHTML = 	'<div class="map-legend"><h4 onclick="toggleLegend();"><i class="fa fa-caret-square-o-down toggle-icon" id="toggle-icon-legend"></i>مفتاح الرموز</h4>'+
+									'<nav class="legend clearfix" id="legend-togglable">'+
+										'<span><img src="https://a.tiles.mapbox.com/v4/marker/pin-m-marker+f86767.png?access_token=pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w" height="50" width="20"></span>'+
+										'<label>خزانات مياه صالحة للشرب</label>'+
+										'<p>خزانات مياه شرب سعة 5 م3 تٌعبأ بشكل دوري<br>تحديث:آب.2015</p>'+
+									'</div>';
+			return this._div;
+		};
+		infoLegend.addTo(map);
+			
+    }
+		
+	function toggleLegend() {
+		console.log("toggle icon clicked!")
+		$( "#legend-togglable" ).toggle( 400, function() {
+			// Animation complete.
+			//debugger;
+			if ($('.fa-caret-square-o-down').hasClass('fa-flip-vertical')){
+				$('.fa-caret-square-o-down').removeClass('fa-flip-vertical');
+			} else {
+				$('.fa-caret-square-o-down').addClass('fa-flip-vertical');
+			}
+		});
+	}
+	
+    window.onload = function() { init(); }
+	
 </script>
+<!--<script type="text/javascript" src="../?language=ar"></script>--> <!-- this is giving error -->
+
 </body>
 </html>
