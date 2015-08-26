@@ -153,7 +153,21 @@ map.on('moveend', editLink);
 			return this._div;
 		};
 		infoLegend.addTo(map);
-			
+		
+			/*$('.map-legend h4').last().click(function() {
+			console.log("toggle icon clicked!");
+			$( ".legend" ).toggle( 400, function() {
+				// Animation complete.
+				debugger;
+				if ($('.fa-caret-square-o-down').hasClass('fa-rotate-180')){
+					$('.fa-caret-square-o-down').removeClass('fa-rotate-180');
+				} else {
+					$('.fa-caret-square-o-down').addClass('fa-rotate-180');
+				}
+
+			});
+		});*/
+				
     }
 		
 	function toggleLegend() {
