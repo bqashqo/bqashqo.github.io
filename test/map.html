@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -19,10 +19,21 @@
 <body>
     <div id="map"></div>
     <script>
-        var map = L.map('map').setView([46.207771, 6.141652], 15);
-        L.tileLayer('https://api.maptiler.com/maps/positron/{z}/{x}/{y}.png?key=GLZrA1UadEUK6f1yaefn', {
+        var map = L.map('map').setView([46.205917, 6.147682], 15);
+        L.tileLayer('https://api.maptiler.com/maps/positron/256/{z}/{x}/{y}.png?key=GLZrA1UadEUK6f1yaefn', {
             attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>'
         }).addTo(map);
+
+        var marker = L.marker([46.208875, 6.143772]).addTo(map).bindPopup("<b>XXX Place!</b><br />Additional info...").openPopup();
+        var marker = L.marker([46.205806, 6.140793]).addTo(map).bindPopup("<b>XXX Place!</b><br />Additional info...");
+        var marker = L.marker([46.203813, 6.144400]).addTo(map).bindPopup("<b>XXX Place!</b><br />Additional info...");
+        var marker = L.marker([46.204409, 6.148669]).addTo(map).bindPopup("<b>XXX Place!</b><br />Additional info...");
+        var marker = L.marker([46.202508, 6.142680]).addTo(map).bindPopup("<b>XXX Place!</b><br />Additional info...");
+        var marker = L.marker([46.202367, 6.151252]).addTo(map).bindPopup("<b>XXX Place!</b><br />Additional info...");
+        var marker = L.marker([46.208735, 6.135002]).addTo(map).bindPopup("<b>XXX Place!</b><br />Additional info...");
+        var marker = L.marker([46.210190, 6.154143]).addTo(map).bindPopup("<b>XXX Place!</b><br />Additional info...");
+        var marker = L.marker([46.204517, 6.160279]).addTo(map).bindPopup("<b>XXX Place!</b><br />Additional info...");
+        var marker = L.marker([46.205260, 6.143757]).addTo(map).bindPopup("<b>XXX Place!</b><br />Additional info...");
     </script>
 </body>
 
