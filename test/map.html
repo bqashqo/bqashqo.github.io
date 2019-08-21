@@ -14,15 +14,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-        }
-        
-        #logo {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            height: 20px;
-            width: 20px;
-            z-index: 1;
+            z-index: 0;
         }
     </style>
 </head>
@@ -46,8 +38,16 @@
         var marker = L.marker([46.204517, 6.160279]).addTo(map).bindPopup("<b>XXX Place!</b><br />Additional info...");
         var marker = L.marker([46.205260, 6.143757]).addTo(map).bindPopup("<b>XXX Place!</b><br />Additional info...");
     </script>
-    <a href="https://www.icrc.org/"> <img src="https://bqashqo.github.io/test/ICRC_Logo.png" alt="ICRC" class="logo">
-    </a>
+    <div style="
+        position:absolute;
+        size: initial;
+        bottom:10px;
+        left:10px;
+        opacity: 0.7;
+        z-index:10;">
+        <a href="https://www.icrc.org/"> <img src="https://bqashqo.github.io/test/ICRC_Logo.png" width=50 alt="ICRC" class="logo">
+        </a>
+    </div>
 </body>
 
 </html>
