@@ -2,6 +2,8 @@
 <html>
 
 <head>
+    <title>Event's Locations Map - GVA</title>
+    <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
@@ -12,6 +14,15 @@
             bottom: 0;
             left: 0;
             right: 0;
+        }
+        
+        #logo {
+            position: relative;
+            bottom: 10%;
+            left: 10%;
+            height: 20px;
+            width: 20px;
+            z-index: 1;
         }
     </style>
 </head>
@@ -35,6 +46,8 @@
         var marker = L.marker([46.204517, 6.160279]).addTo(map).bindPopup("<b>XXX Place!</b><br />Additional info...");
         var marker = L.marker([46.205260, 6.143757]).addTo(map).bindPopup("<b>XXX Place!</b><br />Additional info...");
     </script>
+    <a href="https://www.icrc.org/"> <img src="https://bqashqo.github.io/test/ICRC_Logo.png" alt="ICRC" class="logo">
+    </a>
 </body>
 
 </html>
